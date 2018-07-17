@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Champion} from '../champion';
-import { CHAMPIONS } from '../mock-champions';
+import {ChampionService} from '../champion.service';
 
 @Component({
   selector: 'app-champions',
@@ -9,18 +9,21 @@ import { CHAMPIONS } from '../mock-champions';
 })
 export class ChampionsComponent implements OnInit {
 
-  champions = CHAMPIONS;
-
   selectedChampion: Champion;
 
-  constructor() { }
+  champions: Champion[];
 
+  constructor(private championService: ChampionService) { }
 
   ngOnInit() {
+    this.getChampions();
   }
 
   onSelect(champion: Champion): void {
     this.selectedChampion = champion;
   }
 
+  getChampions(): void {
+    this.championService.getChampions().subscribe(champions => this.champions = champions);
+  }
 }
