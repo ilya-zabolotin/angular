@@ -1,0 +1,11 @@
+<h2>F1 Champions</h2>
+<ul class="champions">
+  <li *ngFor="let champion of champions"
+      [class.selected]="champion === selectedChampion"
+      (click)="onSelect(champion)">
+
+    <span class="badge">{{champion.id}}</span> {{champion.name}}: {{champion.years}}
+  </li>
+</ul>
+
+<app-champion-detail [champion]="selectedChampion"></app-champion-detail>
