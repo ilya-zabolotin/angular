@@ -17,4 +17,8 @@ export class ChampionService {
     this.messageService.add('ChampionService: fetched champions');
     return of (CHAMPIONS);
   }
+  getChampion (id: number): Observable <Champion> {
+    this.messageService.add(`ChampionService: fetched hero id=${id}`);
+    return of(CHAMPIONS.find(champion => champion.id === id));
+  }
 }

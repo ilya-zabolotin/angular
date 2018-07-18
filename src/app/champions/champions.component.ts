@@ -9,18 +9,12 @@ import {ChampionService} from '../champion.service';
 })
 export class ChampionsComponent implements OnInit {
 
-  selectedChampion: Champion;
-
   champions: Champion[];
 
   constructor(private championService: ChampionService) { }
 
   ngOnInit() {
     this.getChampions();
-  }
-
-  onSelect(champion: Champion): void {
-    this.selectedChampion = champion;
   }
 
   getChampions(): void {

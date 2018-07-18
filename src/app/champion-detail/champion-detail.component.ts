@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Champion } from '../champion';
+import {ActivatedRoute} from '@angular/router';
+import {Location} from '@angular/common';
+import {ChampionService} from '../champion.service';
 
 @Component({
   selector: 'app-champion-detail',
@@ -10,9 +13,21 @@ export class ChampionDetailComponent implements OnInit {
 
   @Input() champion: Champion;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute,
+              private championService: ChampionService,
+              private location: Location) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.getChampion();
+  }
+
+  getChampion(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.championService.getChampion(id).subscribe(champion => this.champion = champion);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }
