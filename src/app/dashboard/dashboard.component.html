@@ -1,10 +1,12 @@
 <h3>Top Champions</h3>
 <div class="grid grid-pad">
-  <a *ngFor="let champion of champions" class="col-1-4" routerLink="/detail/{{champion.name}}">
+  <a *ngFor="let champion of champions" class="col-1-4" routerLink="/detail/{{champion.id}}">
     <div class="module champion">
       <h4>{{champion.name}}</h4>
     </div>
+    <br>
   </a>
   <button (click)="goBack()">goBack</button>
+
 </div>
 

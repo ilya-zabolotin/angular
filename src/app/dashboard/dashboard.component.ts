@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getChampions(): void {
-    this.championService.getChampions().subscribe(champions => this.champions = champions.slice(1, 5));
+    this.championService.getChampions().subscribe(champions => this.champions = champions.slice(0, 33));
   }
   goBack(): void {
     this.location.back();
