@@ -30,4 +30,8 @@ export class ChampionDetailComponent implements OnInit {
     this.location.back();
   }
 
+  save(): void {
+    this.championService.updateChampion(this.champion).subscribe(() => this.goBack());
+}
+
 }

@@ -1,9 +1,21 @@
 <h2>F1 Champions</h2>
+
+<div>
+  <label>Champion name:
+    <input #championName />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(championName.value); championName.value=''">
+    add
+  </button>
+</div>
 <ul class="champions">
   <li *ngFor="let champion of champions">
     <a routerLink="/detail/{{champion.id}}">
       <span class="badge">{{champion.id}}</span> {{champion.name}}: {{champion.years}}
     </a>
+    <button class="delete" title="delete champion"
+            (click)="delete(champion)">x</button>
   </li>
 </ul>
 

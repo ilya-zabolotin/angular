@@ -20,4 +20,18 @@ export class ChampionsComponent implements OnInit {
   getChampions(): void {
     this.championService.getChampions().subscribe(champions => this.champions = champions);
   }
+
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.championService.addChampion({ name } as Champion)
+      .subscribe(champion => {
+        this.champions.push(champion);
+      });
+  }
+
+  delete(champion: Champion): void {
+    this.champions = this.champions.filter(h => h !== champion);
+    this.championService.deleteChampion(champion).subscribe();
+  }
 }
